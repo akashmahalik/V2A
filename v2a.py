@@ -1,7 +1,42 @@
 import sys
 import os
 
+def v2a(file,flag,filePath):
+	try:
+		if file.endswith(".mp3"):
+			return
+		elif file.endswith(".wav"):
+			wav2mp3(file,flag,filePath)
+		elif file.endswith(".avi") or file.endswith(".flv") or file.endswith(".mp4") or file.endswith(".mov") or file.endswith(".wmv") or file.endswith(".mkv"):
+			
+			rest2mp3(file,flag,filePath) 
+	except Exception as e:
+		raise e
 
+def wav2mp3(file,flag,filePath):
+	
+	file_name,extension = os.path.splitext(file)
+	if flag:
+		conversion2mp3 = 'lame ' +filePath+'/' +"\'%s\'.wav" %file_name  + ' '+'Audio_files/'+ "\'%s\'" %file_name + '.mp3'
+	else:
+		conversion2mp3 = 'lame ' + "\'%s\'.wav" %file_name  + ' '+'Audio_files/'+ "\'%s\'" %file_name + '.mp3'	
+	
+	
+	os.system(conversion2mp3)
+
+def rest2mp3(file,flag,filePath):
+	
+	file_name,extension = os.path.splitext(file)
+	if flag:
+		conversion2wav = 'ffmpeg -i ' + filePath +'/' +'\'%s\'' %file_name + extension + ' ' + "\'%s\'" %file_name + '.wav'
+	else:
+		conversion2wav = 'ffmpeg -i ' + '\'%s\'' %file_name + extension + ' ' + "\'%s\'" %file_name + '.wav'	
+	
+	
+	os.system(conversion2wav)
+	wav2mp3(file,0,filePath)
+	delete_wav = 'rm ' + "\'%s\'" %file_name + '.wav'
+	os.system(delete_wav)
 
 
 def main():
@@ -20,15 +55,27 @@ def main():
 				
 		except OSError as error:
 				pass
-		if os.path.isfile('filePath'):
-					print('Converting...')
-					v2a(filePath)
-
-		elif os.path.isdir('filePath'):
+		
+		
+		if os.path.isfile(filePath):
 					os.system('mkdir Audio_files')
 					print('Converting...')
-					for file in os.listdir('filePath'):
-							v2a(file)			
+					if(filePath.count('/')>0):
+						v2a(filePath,1,filePath)
+					else:
+						v2a(filePath,0,filePath)
+						
+					
+					
+
+		elif os.path.isdir(filePath):
+					os.system('mkdir Audio_files')
+					print('Converting...')
+					
+					
+					for file in os.listdir(filePath):
+						print(file)
+						v2a(file,1,filePath)			
 
 
 		
