@@ -17,9 +17,9 @@ def wav2mp3(file,flag,filePath):
 	
 	file_name,extension = os.path.splitext(file)
 	if flag:
-		conversion2mp3 = 'lame ' +filePath+'/' +"\'%s\'.wav" %file_name  + ' '+'Audio_files/'+ "\'%s\'" %file_name + '.mp3'
+		conversion2mp3 = 'lame ' +filePath+'/' +"\"%s\".wav" %file_name  + ' '+'Audio_files/'+ "\"%s\"" %file_name + '.mp3'
 	else:
-		conversion2mp3 = 'lame ' + "\'%s\'.wav" %file_name  + ' '+'Audio_files/'+ "\'%s\'" %file_name + '.mp3'	
+		conversion2mp3 = 'lame ' + "\"%s\".wav" %file_name  + ' '+'Audio_files/'+ "\"%s\"" %file_name + '.mp3'	
 	
 	
 	os.system(conversion2mp3)
@@ -28,14 +28,14 @@ def rest2mp3(file,flag,filePath):
 	
 	file_name,extension = os.path.splitext(file)
 	if flag:
-		conversion2wav = 'ffmpeg -i ' + filePath +'/' +'\'%s\'' %file_name + extension + ' ' + "\'%s\'" %file_name + '.wav'
+		conversion2wav = 'ffmpeg -i ' + filePath +'/' +'\"%s\"' %file_name + extension + ' ' + "\"%s\"" %file_name + '.wav'
 	else:
-		conversion2wav = 'ffmpeg -i ' + '\'%s\'' %file_name + extension + ' ' + "\'%s\'" %file_name + '.wav'	
+		conversion2wav = 'ffmpeg -i ' + '\"%s\"' %file_name + extension + ' ' + "\"%s\"" %file_name + '.wav'	
 	
 	
 	os.system(conversion2wav)
 	wav2mp3(file,0,filePath)
-	delete_wav = 'rm ' + "\'%s\'" %file_name + '.wav'
+	delete_wav = 'rm ' + "\"%s\"" %file_name + '.wav'
 	os.system(delete_wav)
 
 
