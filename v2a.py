@@ -86,6 +86,7 @@ def main():
 					
 
 		elif os.path.isdir(filePath):
+					os.system('mkdir Audio_files')
 					os.system('mkdir Audio_files/' + filePath)
 					print('Converting...')
 					
