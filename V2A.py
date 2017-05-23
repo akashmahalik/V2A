@@ -44,7 +44,7 @@ def rest2mp3(file,flag,filePath):
 
 def recur_dir(filePath):
 	for file in os.listdir(filePath):
-						print(file)
+						
 						temp=filePath+'/'+file
 
 						if os.path.isdir(temp):
