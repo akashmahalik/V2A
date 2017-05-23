@@ -4,6 +4,7 @@ import os
 def v2a(file,flag,filePath):
 	try:
 		if file.endswith(".mp3"):
+			os.system('cp '+filePath + '/' + "\"%s\"" %file + ' ' + 'Audio_files/' + filePath + '/' )
 			return
 		elif file.endswith(".wav"):
 			wav2mp3(file,flag,filePath)
