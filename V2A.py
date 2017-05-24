@@ -38,7 +38,7 @@ def rest2mp3(file,flag,filePath):
 	
 	
 	os.system(conversion2wav)
-	wav2mp3(file,1,filePath)
+	wav2mp3(file,flag,filePath)
 	delete_wav = 'rm ' +filePath+'/'+ "\"%s\"" %file_name + '.wav'
 	os.system(delete_wav)
 
