@@ -19,11 +19,11 @@ def wav2mp3(file,flag,filePath):
 	file_name,extension = os.path.splitext(file)
 	if flag:
 		
-		conversion2mp3 = 'lame ' +filePath+'/' +"\"%s\".wav" %file_name  + ' '+'Audio_files/'+ filePath+'/'+ "\"%s\"" %file_name + '.mp3'
+		conversion2mp3 = 'lame ' +filePath+'/' +"\"%s\"" %file_name  +'.wav' +  ' '+'Audio_files/'+ filePath+'/'+ "\"%s\"" %file_name + '.mp3'
 		
 		
 	else:
-		conversion2mp3 = 'lame ' + "\"%s\".wav" %file_name  + ' '+'Audio_files/'+ "\"%s\"" %file_name + '.mp3'	
+		conversion2mp3 = 'lame ' + "\"%s\"" %file_name+ '.wav'  + ' '+'Audio_files/'+ "\"%s\"" %file_name + '.mp3'		
 	
 	
 	os.system(conversion2mp3)
